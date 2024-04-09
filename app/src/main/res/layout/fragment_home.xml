@@ -88,6 +88,66 @@
                 android:textSize="14sp" />
         </TableRow>
 
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/tagCheckBox7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/food_tag_7"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <CheckBox
+                android:id="@+id/tagCheckBox8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/food_tag_8"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+            <CheckBox
+                android:id="@+id/tagCheckBox9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/food_tag_9"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/tagCheckBox10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/food_tag_10"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <CheckBox
+                android:id="@+id/tagCheckBox11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/food_tag_11"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+            <CheckBox
+                android:id="@+id/tagCheckBox12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/food_tag_12"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+        </TableRow>
+
     </TableLayout>
 
     <EditText

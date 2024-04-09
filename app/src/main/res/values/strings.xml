@@ -32,18 +32,18 @@
     <string name="remove_from_fav_success"> was removed from Favourites</string>
 
 
-    <string name="food_tag_1">main course</string>
-    <string name="food_tag_2">side dish</string>
-    <string name="food_tag_3">dessert</string>
-    <string name="food_tag_4">appetizer</string>
-    <string name="food_tag_5">salad</string>
-    <string name="food_tag_6">bread</string>
-    <string name="food_tag_7">soup</string>
-    <string name="food_tag_8">sauce</string>
-    <string name="food_tag_9">marinade</string>
-    <string name="food_tag_10">fingerfood</string>
-    <string name="food_tag_11">snack</string>
-    <string name="food_tag_12">drink</string>
+    <string name="food_tag_1">Main Course</string>
+    <string name="food_tag_2">Side Dish</string>
+    <string name="food_tag_3">Dessert</string>
+    <string name="food_tag_4">Appetizer</string>
+    <string name="food_tag_5">Salad</string>
+    <string name="food_tag_6">Bread</string>
+    <string name="food_tag_7">Soup</string>
+    <string name="food_tag_8">Sauce</string>
+    <string name="food_tag_9">Marinade</string>
+    <string name="food_tag_10">Fingerfood</string>
+    <string name="food_tag_11">Snack</string>
+    <string name="food_tag_12">Drink</string>
 
 
     <string name="recipe_category">Category: </string>
