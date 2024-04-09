@@ -1,0 +1,77 @@
+<resources>
+    <string name="app_name">Find My Kai</string>
+
+    <string name="api_key">653ebcf644aa4ffb92425b3587e23538</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Find My Kai</string>
+    <string name="nav_header_subtitle">The proof of the pudding is in the eating</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_surpriseme">Surprise Me</string>
+    <string name="menu_about">About</string>
+    <string name="menu_favourites">Favourites</string>
+
+    <string name="search_kai">Search My Kai</string>
+    <string name="my_kai">My Kai</string>
+    <string name="no_results">No results found</string>
+
+    <string name="go_to_url">Go to website</string>
+
+    <string name="servings"> Servings</string>
+    <string name="minutes"> Minutes</string>
+
+    <string name="add_to_fav">+</string>
+    <string name="remove_from_fav">-</string>
+    <string name="add_to_fav_success"> was added to Favourites</string>
+    <string name="remove_from_fav_success"> was removed from Favourites</string>
+
+
+    <string name="food_tag_1">main course</string>
+    <string name="food_tag_2">side dish</string>
+    <string name="food_tag_3">dessert</string>
+    <string name="food_tag_4">appetizer</string>
+    <string name="food_tag_5">salad</string>
+    <string name="food_tag_6">bread</string>
+    <string name="food_tag_7">soup</string>
+    <string name="food_tag_8">sauce</string>
+    <string name="food_tag_9">marinade</string>
+    <string name="food_tag_10">fingerfood</string>
+    <string name="food_tag_11">snack</string>
+    <string name="food_tag_12">drink</string>
+
+
+    <string name="recipe_category">Category: </string>
+    <string-array name="tags">
+        <item>Main Course</item>
+        <item>Side Dish</item>
+        <item>Dessert</item>
+        <item>Appetizer</item>
+        <item>Salad</item>
+        <item>Bread</item>
+        <item>Breakfast</item>
+        <item>Soup</item>
+        <item>Beverage</item>
+        <item>Sauce</item>
+        <item>Marinade</item>
+        <item>Fingerfood</item>
+        <item>Snack</item>
+        <item>Drink</item>
+    </string-array>
+
+
+    <string-array name="phrases">
+        <item>Walnuts and pears you plant for your heirs.</item>
+        <item>You are what you eat.</item>
+        <item>Too many cooks spoil the broth.</item>
+        <item>When life gives you lemons, make lemonade.</item>
+        <item>phrase</item>
+        <item>phrase</item>
+    </string-array>
+
+</resources>
