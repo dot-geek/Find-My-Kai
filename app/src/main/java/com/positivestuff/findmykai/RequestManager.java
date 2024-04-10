@@ -34,7 +34,6 @@ public class RequestManager {
     public void getFeaturedRecipes(FeaturedRecipeResponseListener listener, List<String> tags) {
         CallFeaturedRecipes callFeaturedRecipes = retrofit.create(CallFeaturedRecipes.class);
         Call<RandomRecipeAPIResponse> call = callFeaturedRecipes.callFeaturedRecipe(context.getString(R.string.api_key),"10", tags);
-        //Call<RandomRecipeAPIResponse> call = callFeaturedRecipes.callFeaturedRecipe(context.getString(R.string.api_key),"10");
         call.enqueue(new Callback<RandomRecipeAPIResponse>() {
             @Override
             public void onResponse(Call<RandomRecipeAPIResponse> call, Response<RandomRecipeAPIResponse> response) {
@@ -71,10 +70,10 @@ public class RequestManager {
             }
         });
     }
+
     public void getComplexSearchRecipes(ComplexSearchRecipeResponseListener listener, String query, String type) {
         CallComplexSearchRecipe callSearchRecipes = retrofit.create(CallComplexSearchRecipe.class);
         Call<ComplexSearchRecipeResponse> call = callSearchRecipes.callComplexSearchRecipe(context.getString(R.string.api_key),"10", query, type);
-        //Call<RandomRecipeAPIResponse> call = callFeaturedRecipes.callFeaturedRecipe(context.getString(R.string.api_key),"10");
         call.enqueue(new Callback<ComplexSearchRecipeResponse>() {
             @Override
             public void onResponse(Call<ComplexSearchRecipeResponse> call, Response<ComplexSearchRecipeResponse> response) {
@@ -107,7 +106,6 @@ public class RequestManager {
                 @Path("id") int id,
                 @Query("apiKey") String apiKey
         );
-
     }
 
     private interface CallComplexSearchRecipe {
@@ -118,6 +116,5 @@ public class RequestManager {
                 @Query("query") String query,
                 @Query("type") String type
         );
-
     }
 }

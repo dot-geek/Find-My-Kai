@@ -20,7 +20,6 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsViewHold
 
     Context context;
     List<ExtendedIngredient> list;
-
     public IngredientsAdapter(Context context, List<ExtendedIngredient> list) {
         this.context = context;
         this.list = list;

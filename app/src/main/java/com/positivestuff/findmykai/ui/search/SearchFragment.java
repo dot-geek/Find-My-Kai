@@ -45,27 +45,21 @@ public class SearchFragment extends Fragment {
     ComplexSearchRecipeAdapter complexSearchRecipeAdapter;
     RecyclerView recyclerView;
     Spinner spinner;
-    //List<String> tags = new ArrayList<>();
     String recipeCategory;
     SearchView searchView;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        SearchViewModel searchViewModel =
-                new ViewModelProvider(this).get(SearchViewModel.class);
+        SearchViewModel searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
 
         binding = FragmentSearchBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
-
 
         dialog = new ProgressDialog(container.getContext());
         dialog.setTitle("Loading...");
 
         searchView = binding.searchViewSearchInput;
-        //searchView.setTextColor(R.color.white);
-        //searchView = (SearchView) getView().findViewById(R.id.searchView_home);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -81,7 +75,6 @@ public class SearchFragment extends Fragment {
         });
 
         spinner = binding.spinnerTags;
-        //spinner = (Spinner) getView().findViewById(R.id.spinner_tags);
         ArrayAdapter arrayAdapter = ArrayAdapter.createFromResource(
                 container.getContext(),
                 R.array.tags,
@@ -91,9 +84,7 @@ public class SearchFragment extends Fragment {
         spinner.setAdapter(arrayAdapter);
         spinner.setOnItemSelectedListener(spinnerSelectedListener);
 
-
         manager = new RequestManager(container.getContext());
-
 
         return root;
     }
@@ -104,16 +95,10 @@ public class SearchFragment extends Fragment {
         binding = null;
     }
 
-
-
     private final AdapterView.OnItemSelectedListener spinnerSelectedListener = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            //tags.clear();
-            //tags.add(parent.getSelectedItem().toString());
             recipeCategory = parent.getSelectedItem().toString();
-            //manager.getFeaturedRecipes(featuredRecipeResponseListener, tags);
-            //dialog.show();
         }
 
         @Override
@@ -121,7 +106,6 @@ public class SearchFragment extends Fragment {
 
         }
     };
-
 
     private final ComplexSearchRecipeResponseListener complexSearchRecipeResponseListener = new ComplexSearchRecipeResponseListener() {
         @Override
@@ -143,14 +127,12 @@ public class SearchFragment extends Fragment {
         @Override
         public void didError(String message) {
             Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-
         }
     };
 
     private final RecipeClickListener recipeClickListener = new RecipeClickListener() {
         @Override
         public void onRecipeClicked(String id) {
-
             Intent intent = new Intent(getContext(), RecipeDetailsActivity.class);
             intent.putExtra("id", id);
             startActivity(intent);
@@ -160,6 +142,5 @@ public class SearchFragment extends Fragment {
     private void searchRecipe(String searchWord) {
         recipeCategory = recipeCategory.toLowerCase();
         manager.getComplexSearchRecipes(complexSearchRecipeResponseListener, searchWord, recipeCategory);
-
     }
 }

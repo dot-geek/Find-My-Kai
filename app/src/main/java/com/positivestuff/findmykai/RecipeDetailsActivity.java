@@ -32,11 +32,9 @@ public class RecipeDetailsActivity extends AppCompatActivity {
     TextView textView_meal_name, textView_meal_source, textView_meal_summary, textView_meal_ingredients, textView_list_ingredients;
     TextView textView_time, textView_servings;
     ImageView imageView_meal_image;
-    //RecyclerView recycler_meal_ingredients;
     Button button_add_to_fav, button_cook_it;
     RequestManager manager;
     ProgressDialog dialog;
-    //IngredientsAdapter ingredientsAdapter;
     RecipeDetailsResponse theRecipeResponse;
 
     @Override
@@ -68,8 +66,6 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         button_add_to_fav = findViewById(R.id.add_to_fav);
         button_add_to_fav.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-
-
                 // Get singleton instance of database
                 FavDatabaseHelper databaseHelper = FavDatabaseHelper.getInstance(RecipeDetailsActivity.this);
                 boolean isFav = databaseHelper.isFav(theRecipeResponse.id);
@@ -100,8 +96,6 @@ public class RecipeDetailsActivity extends AppCompatActivity {
             Intent urlIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             startActivity(urlIntent);
         });
-
-        //recycler_meal_ingredients = findViewById(R.id.recycler_meal_ingredients);
     }
 
     private final RecipeDetailsListener recipeDetailsListener = new RecipeDetailsListener() {
@@ -111,17 +105,12 @@ public class RecipeDetailsActivity extends AppCompatActivity {
             dialog.dismiss();
             textView_meal_name.setText(response.title);
             textView_meal_source.setText(response.sourceName);
-            //textView_meal_source.setText(response.sourceUrl);
-            //textView_meal_summary.setText(response.sourceUrl + "\n\n" + response.summary);
-            //textView_meal_summary.setText(response.sourceUrl);
-            //textView_meal_summary.setText(response.summary);
             Picasso.get().load(response.image).into(imageView_meal_image);
 
-            //textView_time.setText(response.readyInMinutes + R.string.minutes);
-            //textView_servings.setText(response.servings + R.string.servings);
-            textView_time.setText(R.string.minutes);
-            textView_servings.setText(R.string.servings);
-
+            String minutes = response.readyInMinutes + " " + getResources().getString(R.string.minutes);
+            textView_time.setText(minutes);
+            String servings = response.servings + " " + getResources().getString(R.string.servings);
+            textView_servings.setText(servings);
 
             List<ExtendedIngredient> list = response.extendedIngredients;
             StringBuilder builder = new StringBuilder();
@@ -145,12 +134,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                     builder.append("\n");
                 }
             }
-//            String theString = builder.toString() + "\n\n" + response.instructions + "\n\n" + response.summary;
-//            textView_meal_summary.setText(theString);
             textView_meal_summary.setText(builder.toString());
-
-            //textView_meal_summary.setText(response.instructions + "\n\n" + response.summary);
-
 
             FavDatabaseHelper databaseHelper = FavDatabaseHelper.getInstance(getApplicationContext());
             boolean isFav = databaseHelper.isFav(response.id);
@@ -165,7 +149,6 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         @Override
         public void didError(String message) {
             Toast.makeText(RecipeDetailsActivity.this, message, Toast.LENGTH_SHORT).show();
-
         }
     };
 }

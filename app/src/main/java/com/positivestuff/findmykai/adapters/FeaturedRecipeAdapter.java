@@ -45,17 +45,14 @@ public class FeaturedRecipeAdapter extends RecyclerView.Adapter<FeaturedRecipeVi
     public void onBindViewHolder(@NonNull FeaturedRecipeViewHolder holder, int position) {
         holder.textView_title.setText(list.get(position).title);
         holder.textView_title.setSelected(true);
-        //holder.textView_like.setText(list.get(position).aggregateLikes+" Likes");
         Resources res = holder.itemView.getContext().getResources();
-        holder.textView_servings.setText(list.get(position).servings + "Serves");
-        holder.textView_time.setText(list.get(position).readyInMinutes + "Mins");
-        //holder.textView_servings.setText(list.get(position).servings + res.getString(R.string.servings));
-        //holder.textView_time.setText(list.get(position).readyInMinutes + res.getString(R.string.minutes));
+        String servings = list.get(position).servings + " " + res.getString(R.string.servings);
+        holder.textView_servings.setText(servings);
+        String time = list.get(position).readyInMinutes + " " + res.getString(R.string.minutes);
+        holder.textView_time.setText(time);
         Picasso.get().load(list.get(position).image).into(holder.imageView_food);
 
-
         holder.button_addOrRemoveFav.setOnClickListener(view -> {
-            //Resources res = holder.itemView.getContext().getResources();
             Recipe theRecipe = list.get(holder.getAdapterPosition());
 
             // Get singleton instance of database
@@ -98,7 +95,6 @@ public class FeaturedRecipeAdapter extends RecyclerView.Adapter<FeaturedRecipeVi
 class FeaturedRecipeViewHolder extends RecyclerView.ViewHolder {
 
     CardView featured_list_container;
-    //TextView textView_title, textView_servings, textView_like, textView_time;
     TextView textView_title, textView_servings, textView_time;
     ImageView imageView_food;
     Button button_addOrRemoveFav;

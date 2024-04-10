@@ -18,14 +18,13 @@ public class AboutFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        AboutViewModel homeViewModel =
-                new ViewModelProvider(this).get(AboutViewModel.class);
+        AboutViewModel aboutViewModel = new ViewModelProvider(this).get(AboutViewModel.class);
 
         binding = FragmentAboutBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textAboutDetails;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        aboutViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

@@ -33,25 +33,13 @@ public class FavouritesFragment extends Fragment {
     private FragmentFavouritesBinding binding;
     RecyclerView recyclerView;
     ComplexSearchRecipeAdapter complexSearchRecipeAdapter;
-    //List<Result> allFavouriteRecipeResults;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        FavouritesViewModel searchViewModel =
-                new ViewModelProvider(this).get(FavouritesViewModel.class);
+        FavouritesViewModel favouritesViewModel = new ViewModelProvider(this).get(FavouritesViewModel.class);
 
         binding = FragmentFavouritesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
-//        // Get singleton instance of database
-//        allFavouriteRecipeResults = FavDatabaseHelper.getInstance(getContext()).getAllFavouriteRecipeResults();
-//
-//        recyclerView = binding.recylerFavResults;
-//        recyclerView.setHasFixedSize(true);
-//        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
-//        complexSearchRecipeAdapter = new ComplexSearchRecipeAdapter(getContext(), allFavouriteRecipeResults, recipeClickListener);
-//        recyclerView.setAdapter(complexSearchRecipeAdapter);
-
 
         return root;
     }
@@ -64,10 +52,6 @@ public class FavouritesFragment extends Fragment {
 
     @Override
     public void onResume() {
-//        allFavouriteRecipeResults.clear();
-//        allFavouriteRecipeResults = FavDatabaseHelper.getInstance(getContext()).getAllFavouriteRecipeResults();
-//        complexSearchRecipeAdapter.notifyDataSetChanged();
-
         // Get singleton instance of database
         List<Result> allFavouriteRecipeResults = FavDatabaseHelper.getInstance(getContext()).getAllFavouriteRecipeResults();
 
@@ -78,13 +62,11 @@ public class FavouritesFragment extends Fragment {
         recyclerView.setAdapter(complexSearchRecipeAdapter);
 
         super.onResume();
-
     }
 
     private final RecipeClickListener recipeClickListener = new RecipeClickListener() {
         @Override
         public void onRecipeClicked(String id) {
-
             Intent intent = new Intent(getContext(), RecipeDetailsActivity.class);
             intent.putExtra("id", id);
             startActivity(intent);

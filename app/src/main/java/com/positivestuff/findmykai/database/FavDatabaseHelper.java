@@ -61,21 +61,12 @@ public class FavDatabaseHelper extends SQLiteOpenHelper {
     // If a database already exists on disk with the same DATABASE_NAME, this method will NOT be called.
     @Override
     public void onCreate(SQLiteDatabase db) {
-//        String CREATE_POSTS_TABLE = "CREATE TABLE " + TABLE_POSTS +
-//                "(" +
-//                KEY_POST_ID + " INTEGER PRIMARY KEY," + // Define a primary key
-//                KEY_POST_USER_ID_FK + " INTEGER REFERENCES " + TABLE_USERS + "," + // Define a foreign key
-//                KEY_POST_TEXT + " TEXT" +
-//                ")";
-
         String CREATE_FAV_RECIPE_TABLE = "CREATE TABLE " + FeedReaderContract.FeedEntry.TABLE_FAV_RECIPES + " (" +
                 FeedReaderContract.FeedEntry._ID + " INTEGER PRIMARY KEY," +
                 FeedReaderContract.FeedEntry.COLUMN_RECIPE_ID + " TEXT," +
                 FeedReaderContract.FeedEntry.COLUMN_RECIPE_TITLE + " TEXT," +
                 FeedReaderContract.FeedEntry.COLUMN_RECIPE_IMAGE + " TEXT)";
 
-
-        //db.execSQL(CREATE_POSTS_TABLE);
         db.execSQL(CREATE_FAV_RECIPE_TABLE);
     }
 
@@ -161,10 +152,6 @@ public class FavDatabaseHelper extends SQLiteOpenHelper {
         try {
             if (cursor.moveToFirst()) {
                 do {
-//                    User newUser = new User();
-//                    newUser.userName = cursor.getString(cursor.getColumnIndex(KEY_RECIPE_TITLE));
-//                    newUser.profilePictureUrl = cursor.getString(cursor.getColumnIndex(KEY_RECIPE_IMAGE));
-
                     //TODO: Tidy up (int)
                     Recipe newRecipe = new Recipe();
                     String recipeID = cursor.getString((int)(cursor.getColumnIndex(FeedReaderContract.FeedEntry.COLUMN_RECIPE_ID)));
@@ -191,7 +178,6 @@ public class FavDatabaseHelper extends SQLiteOpenHelper {
 
         listOfFavouritesByID.clear();
 
-
         String FAV_RECIPE_SELECT_QUERY =
                 String.format("SELECT * FROM %s", FeedReaderContract.FeedEntry.TABLE_FAV_RECIPES);
 
@@ -202,7 +188,6 @@ public class FavDatabaseHelper extends SQLiteOpenHelper {
         try {
             if (cursor.moveToFirst()) {
                 do {
-
                     //TODO: Tidy up (int)
                     Result newRecipe = new Result();
                     String recipeID = cursor.getString((int)(cursor.getColumnIndex(FeedReaderContract.FeedEntry.COLUMN_RECIPE_ID)));
@@ -230,7 +215,6 @@ public class FavDatabaseHelper extends SQLiteOpenHelper {
         db.beginTransaction();
         try {
             // Order of deletions is important when foreign key relationships exist.
-            //db.delete(TABLE_POSTS, null, null);
             db.delete(FeedReaderContract.FeedEntry.TABLE_FAV_RECIPES, null, null);
             db.setTransactionSuccessful();
         } catch (Exception e) {
@@ -272,9 +256,6 @@ public class FavDatabaseHelper extends SQLiteOpenHelper {
 
     public boolean removeFromFav(int recipeID){
         SQLiteDatabase db = getWritableDatabase();
-//        db.execSQL("DELETE FROM " + FeedReaderContract.FeedEntry.TABLE_FAV_RECIPES +
-//                " WHERE " + FeedReaderContract.FeedEntry.COLUMN_RECIPE_ID + "='" + recipeID + "'");
-//        db.close();
 
         listOfFavouritesByID.remove(String.valueOf(recipeID));
         ContentValues args = new ContentValues();

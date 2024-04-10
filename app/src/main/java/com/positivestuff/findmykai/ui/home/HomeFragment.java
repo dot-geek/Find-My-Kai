@@ -26,29 +26,25 @@ public class HomeFragment extends Fragment {
     Button findmykaibutton;
     CheckBox tagCheckBox1, tagCheckBox2, tagCheckBox3, tagCheckBox4, tagCheckBox5, tagCheckBox6,
     tagCheckBox7, tagCheckBox8, tagCheckBox9, tagCheckBox10, tagCheckBox11, tagCheckBox12;
-    List<String> tags = new ArrayList<>();
-
+    HomeViewModel homeViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
 
         findmykaibutton = binding.findmykaibutton;
         findmykaibutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), RecipeListActivity.class);
                 addTagsFromCheckBox();
-                intent.putStringArrayListExtra("tags", (ArrayList<String>) tags);
+                intent.putStringArrayListExtra("tags", (ArrayList<String>) homeViewModel.getTags());
                 startActivity(intent);
 
             }
         });
-
 
         tagCheckBox1 = binding.tagCheckBox1;
         tagCheckBox2 = binding.tagCheckBox2;
@@ -67,57 +63,56 @@ public class HomeFragment extends Fragment {
     }
 
     private void addTagsFromCheckBox() {
-        tags.clear();
+        homeViewModel.clearTags();
         // Go through checkboxes
         if (tagCheckBox1.isChecked())
         {
-            tags.add(getResources().getString(R.string.food_tag_1).toLowerCase());
+            homeViewModel.addTag(getResources().getString(R.string.food_tag_1).toLowerCase());
         }
         if (tagCheckBox2.isChecked())
         {
-            tags.add(getResources().getString(R.string.food_tag_2).toLowerCase());
+            homeViewModel.addTag(getResources().getString(R.string.food_tag_2).toLowerCase());
         }
         if (tagCheckBox3.isChecked())
         {
-            tags.add(getResources().getString(R.string.food_tag_3).toLowerCase());
+            homeViewModel.addTag(getResources().getString(R.string.food_tag_3).toLowerCase());
         }
         if (tagCheckBox4.isChecked())
         {
-            tags.add(getResources().getString(R.string.food_tag_4).toLowerCase());
+            homeViewModel.addTag(getResources().getString(R.string.food_tag_4).toLowerCase());
         }
         if (tagCheckBox5.isChecked())
         {
-            tags.add(getResources().getString(R.string.food_tag_5).toLowerCase());
+            homeViewModel.addTag(getResources().getString(R.string.food_tag_5).toLowerCase());
         }
         if (tagCheckBox6.isChecked())
         {
-            tags.add(getResources().getString(R.string.food_tag_6).toLowerCase());
+            homeViewModel.addTag(getResources().getString(R.string.food_tag_6).toLowerCase());
         }
         if (tagCheckBox7.isChecked())
         {
-            tags.add(getResources().getString(R.string.food_tag_7).toLowerCase());
+            homeViewModel.addTag(getResources().getString(R.string.food_tag_7).toLowerCase());
         }
         if (tagCheckBox8.isChecked())
         {
-            tags.add(getResources().getString(R.string.food_tag_8).toLowerCase());
+            homeViewModel.addTag(getResources().getString(R.string.food_tag_8).toLowerCase());
         }
         if (tagCheckBox9.isChecked())
         {
-            tags.add(getResources().getString(R.string.food_tag_9).toLowerCase());
+            homeViewModel.addTag(getResources().getString(R.string.food_tag_9).toLowerCase());
         }
         if (tagCheckBox10.isChecked())
         {
-            tags.add(getResources().getString(R.string.food_tag_10).toLowerCase());
+            homeViewModel.addTag(getResources().getString(R.string.food_tag_10).toLowerCase());
         }
         if (tagCheckBox11.isChecked())
         {
-            tags.add(getResources().getString(R.string.food_tag_11).toLowerCase());
+            homeViewModel.addTag(getResources().getString(R.string.food_tag_11).toLowerCase());
         }
         if (tagCheckBox12.isChecked())
         {
-            tags.add(getResources().getString(R.string.food_tag_12).toLowerCase());
+            homeViewModel.addTag(getResources().getString(R.string.food_tag_12).toLowerCase());
         }
-
     }
 
     @Override
@@ -125,5 +120,4 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-
 }

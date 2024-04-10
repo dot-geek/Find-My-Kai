@@ -18,12 +18,6 @@
         tools:layout="@layout/fragment_search" />
 
     <fragment
-        android:id="@+id/nav_surpriseme"
-        android:name="com.positivestuff.findmykai.ui.surpriseme.SurpriseMeFragment"
-        android:label="@string/menu_surpriseme"
-        tools:layout="@layout/fragment_surprise_me" />
-
-    <fragment
         android:id="@+id/nav_about"
         android:name="com.positivestuff.findmykai.ui.about.AboutFragment"
         android:label="@string/menu_about"
