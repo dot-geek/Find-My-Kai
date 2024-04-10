@@ -2,6 +2,7 @@ package com.positivestuff.findmykai.ui.home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +25,6 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
 
     Button findmykaibutton;
-    CheckBox tagCheckBox1, tagCheckBox2, tagCheckBox3, tagCheckBox4, tagCheckBox5, tagCheckBox6,
-    tagCheckBox7, tagCheckBox8, tagCheckBox9, tagCheckBox10, tagCheckBox11, tagCheckBox12;
     HomeViewModel homeViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -42,22 +41,8 @@ public class HomeFragment extends Fragment {
                 addTagsFromCheckBox();
                 intent.putStringArrayListExtra("tags", (ArrayList<String>) homeViewModel.getTags());
                 startActivity(intent);
-
             }
         });
-
-        tagCheckBox1 = binding.tagCheckBox1;
-        tagCheckBox2 = binding.tagCheckBox2;
-        tagCheckBox3 = binding.tagCheckBox3;
-        tagCheckBox4 = binding.tagCheckBox4;
-        tagCheckBox5 = binding.tagCheckBox5;
-        tagCheckBox6 = binding.tagCheckBox6;
-        tagCheckBox7 = binding.tagCheckBox7;
-        tagCheckBox8 = binding.tagCheckBox8;
-        tagCheckBox9 = binding.tagCheckBox9;
-        tagCheckBox10 = binding.tagCheckBox10;
-        tagCheckBox11 = binding.tagCheckBox11;
-        tagCheckBox12 = binding.tagCheckBox12;
 
         return root;
     }
@@ -65,53 +50,14 @@ public class HomeFragment extends Fragment {
     private void addTagsFromCheckBox() {
         homeViewModel.clearTags();
         // Go through checkboxes
-        if (tagCheckBox1.isChecked())
-        {
-            homeViewModel.addTag(getResources().getString(R.string.food_tag_1).toLowerCase());
-        }
-        if (tagCheckBox2.isChecked())
-        {
-            homeViewModel.addTag(getResources().getString(R.string.food_tag_2).toLowerCase());
-        }
-        if (tagCheckBox3.isChecked())
-        {
-            homeViewModel.addTag(getResources().getString(R.string.food_tag_3).toLowerCase());
-        }
-        if (tagCheckBox4.isChecked())
-        {
-            homeViewModel.addTag(getResources().getString(R.string.food_tag_4).toLowerCase());
-        }
-        if (tagCheckBox5.isChecked())
-        {
-            homeViewModel.addTag(getResources().getString(R.string.food_tag_5).toLowerCase());
-        }
-        if (tagCheckBox6.isChecked())
-        {
-            homeViewModel.addTag(getResources().getString(R.string.food_tag_6).toLowerCase());
-        }
-        if (tagCheckBox7.isChecked())
-        {
-            homeViewModel.addTag(getResources().getString(R.string.food_tag_7).toLowerCase());
-        }
-        if (tagCheckBox8.isChecked())
-        {
-            homeViewModel.addTag(getResources().getString(R.string.food_tag_8).toLowerCase());
-        }
-        if (tagCheckBox9.isChecked())
-        {
-            homeViewModel.addTag(getResources().getString(R.string.food_tag_9).toLowerCase());
-        }
-        if (tagCheckBox10.isChecked())
-        {
-            homeViewModel.addTag(getResources().getString(R.string.food_tag_10).toLowerCase());
-        }
-        if (tagCheckBox11.isChecked())
-        {
-            homeViewModel.addTag(getResources().getString(R.string.food_tag_11).toLowerCase());
-        }
-        if (tagCheckBox12.isChecked())
-        {
-            homeViewModel.addTag(getResources().getString(R.string.food_tag_12).toLowerCase());
+        for (int i = 0; i < 12; i++){
+            int resID = getResources().getIdentifier("tagCheckBox"+(i+1), "id", getActivity().getPackageName());
+            CheckBox checkBox = (CheckBox)getView().findViewById(resID);
+            if (checkBox.isChecked())
+            {
+                String tag = (String)checkBox.getText();
+                homeViewModel.addTag(tag.toLowerCase());
+            }
         }
     }
 

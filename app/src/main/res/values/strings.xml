@@ -45,23 +45,25 @@
     <string name="food_tag_10">Fingerfood</string>
     <string name="food_tag_11">Snack</string>
     <string name="food_tag_12">Drink</string>
+    <string name="food_tag_13">Breakfast</string>
+    <string name="food_tag_14">Beverage</string>
 
     <string name="recipe_category">Category: </string>
     <string-array name="tags">
-        <item>Main Course</item>
-        <item>Side Dish</item>
-        <item>Dessert</item>
-        <item>Appetizer</item>
-        <item>Salad</item>
-        <item>Bread</item>
-        <item>Breakfast</item>
-        <item>Soup</item>
-        <item>Beverage</item>
-        <item>Sauce</item>
-        <item>Marinade</item>
-        <item>Fingerfood</item>
-        <item>Snack</item>
-        <item>Drink</item>
+        <item>@string/food_tag_1</item>
+        <item>@string/food_tag_2</item>
+        <item>@string/food_tag_3</item>
+        <item>@string/food_tag_4</item>
+        <item>@string/food_tag_5</item>
+        <item>@string/food_tag_6</item>
+        <item>@string/food_tag_7</item>
+        <item>@string/food_tag_8</item>
+        <item>@string/food_tag_9</item>
+        <item>@string/food_tag_10</item>
+        <item>@string/food_tag_11</item>
+        <item>@string/food_tag_12</item>
+        <item>@string/food_tag_13</item>
+        <item>@string/food_tag_14</item>
     </string-array>
 
     <string-array name="phrases">

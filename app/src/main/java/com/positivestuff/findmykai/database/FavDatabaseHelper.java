@@ -6,20 +6,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.provider.BaseColumns;
 import android.util.Log;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.positivestuff.findmykai.models.Recipe;
 import com.positivestuff.findmykai.models.Result;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 public class FavDatabaseHelper extends SQLiteOpenHelper {
     private static final String TAG = "FINDMYKAI_LOG : ";
@@ -253,7 +246,6 @@ public class FavDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
 
         listOfFavouritesByID.remove(String.valueOf(recipeID));
-        ContentValues args = new ContentValues();
         String whereClause = FeedReaderContract.FeedEntry.COLUMN_RECIPE_ID + "=?";
         int rowsDeleted = db.delete(FeedReaderContract.FeedEntry.TABLE_FAV_RECIPES,whereClause,new String[]{String.valueOf(recipeID)});
         return (rowsDeleted > 0);
