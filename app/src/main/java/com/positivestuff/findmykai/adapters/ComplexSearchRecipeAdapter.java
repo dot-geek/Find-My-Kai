@@ -60,8 +60,13 @@ public class ComplexSearchRecipeAdapter extends RecyclerView.Adapter<ComplexSear
             FavDatabaseHelper databaseHelper = FavDatabaseHelper.getInstance(context);
             boolean isFav = databaseHelper.isFav(theRecipe.id);
             if (isFav) {
-                databaseHelper.removeFromFav(theRecipe.id);
-                String theMsg = theRecipe.title + res.getString(R.string.remove_from_fav_success);
+                String theMsg;
+                if (databaseHelper.removeFromFav(theRecipe.id)) {
+                    theMsg = theRecipe.title + res.getString(R.string.remove_from_fav_success);
+                }
+                else {
+                    theMsg = res.getString(R.string.error);
+                }
                 Toast.makeText(context, theMsg, Toast.LENGTH_LONG).show();
                 holder.button_addOrRemoveFav.setText(res.getString(R.string.add_to_fav));
             }
@@ -71,9 +76,15 @@ public class ComplexSearchRecipeAdapter extends RecyclerView.Adapter<ComplexSear
                 recipe.title = theRecipe.title;
                 recipe.image = theRecipe.image;
 
-                // Add sample post to the database
-                databaseHelper.addOrUpdateFavRecipe(recipe);
-                String theMsg = theRecipe.title + res.getString(R.string.add_to_fav_success);
+                // Add recipe to favourites
+                String theMsg;
+                if (databaseHelper.addOrUpdateFavRecipe(recipe) != -1)
+                {
+                    theMsg = theRecipe.title + res.getString(R.string.add_to_fav_success);
+                }
+                else {
+                    theMsg = res.getString(R.string.error);
+                }
                 Toast.makeText(context, theMsg, Toast.LENGTH_LONG).show();
                 holder.button_addOrRemoveFav.setText(res.getString(R.string.remove_from_fav));
             }
@@ -83,7 +94,6 @@ public class ComplexSearchRecipeAdapter extends RecyclerView.Adapter<ComplexSear
             @Override
             public void onClick(View v) {
                 listener.onRecipeClicked(String.valueOf(list.get(holder.getAdapterPosition()).id));
-
             }
         });
     }

@@ -70,8 +70,13 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                 FavDatabaseHelper databaseHelper = FavDatabaseHelper.getInstance(RecipeDetailsActivity.this);
                 boolean isFav = databaseHelper.isFav(theRecipeResponse.id);
                 if (isFav) {
-                    databaseHelper.removeFromFav(theRecipeResponse.id);
-                    String theMsg = theRecipeResponse.title + getResources().getString(R.string.remove_from_fav_success);
+                    String theMsg;
+                    if (databaseHelper.removeFromFav(theRecipeResponse.id)) {
+                        theMsg = theRecipeResponse.title + getResources().getString(R.string.remove_from_fav_success);
+                    }
+                    else {
+                        theMsg = getResources().getString(R.string.error);
+                    }
                     Toast.makeText(RecipeDetailsActivity.this, theMsg, Toast.LENGTH_LONG).show();
                     button_add_to_fav.setText(getResources().getString(R.string.add_to_fav));
                 }
@@ -81,9 +86,15 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                     recipe.title = theRecipeResponse.title;
                     recipe.image = theRecipeResponse.image;
 
-                    // Add sample post to the database
-                    databaseHelper.addOrUpdateFavRecipe(recipe);
-                    String theMsg = theRecipeResponse.title + getResources().getString(R.string.add_to_fav_success);
+                    // Add recipe to favourites
+                    String theMsg;
+                    if (databaseHelper.addOrUpdateFavRecipe(recipe) != -1)
+                    {
+                        theMsg = theRecipeResponse.title + getResources().getString(R.string.add_to_fav_success);
+                    }
+                    else {
+                        theMsg = getResources().getString(R.string.error);
+                    }
                     Toast.makeText(RecipeDetailsActivity.this, theMsg, Toast.LENGTH_LONG).show();
                     button_add_to_fav.setText(getResources().getString(R.string.remove_from_fav));
                 }

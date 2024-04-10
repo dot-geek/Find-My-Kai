@@ -77,7 +77,6 @@ public class FavDatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (oldVersion != newVersion) {
             // Simplest implementation is to drop all old tables and recreate them
-            //db.execSQL("DROP TABLE IF EXISTS " + TABLE_POSTS);
             db.execSQL("DROP TABLE IF EXISTS " + FeedReaderContract.FeedEntry.TABLE_FAV_RECIPES);
             onCreate(db);
         }
@@ -142,8 +141,7 @@ public class FavDatabaseHelper extends SQLiteOpenHelper {
     public List<Recipe> getAllFavouriteRecipes() {
         List<Recipe> recipes = new ArrayList<>();
 
-        String FAV_RECIPE_SELECT_QUERY =
-                String.format("SELECT * FROM %s", FeedReaderContract.FeedEntry.TABLE_FAV_RECIPES);
+        String FAV_RECIPE_SELECT_QUERY = String.format("SELECT * FROM %s", FeedReaderContract.FeedEntry.TABLE_FAV_RECIPES);
 
         // "getReadableDatabase()" and "getWriteableDatabase()" return the same object (except under low
         // disk space scenarios)
@@ -152,7 +150,6 @@ public class FavDatabaseHelper extends SQLiteOpenHelper {
         try {
             if (cursor.moveToFirst()) {
                 do {
-                    //TODO: Tidy up (int)
                     Recipe newRecipe = new Recipe();
                     String recipeID = cursor.getString((int)(cursor.getColumnIndex(FeedReaderContract.FeedEntry.COLUMN_RECIPE_ID)));
                     newRecipe.id = Integer.parseInt(recipeID);
@@ -188,7 +185,6 @@ public class FavDatabaseHelper extends SQLiteOpenHelper {
         try {
             if (cursor.moveToFirst()) {
                 do {
-                    //TODO: Tidy up (int)
                     Result newRecipe = new Result();
                     String recipeID = cursor.getString((int)(cursor.getColumnIndex(FeedReaderContract.FeedEntry.COLUMN_RECIPE_ID)));
                     newRecipe.id = Integer.parseInt(recipeID);
@@ -227,8 +223,7 @@ public class FavDatabaseHelper extends SQLiteOpenHelper {
     public void initiate() {
         listOfFavouritesByID.clear();
 
-        String FAV_RECIPE_SELECT_QUERY =
-                String.format("SELECT * FROM %s", FeedReaderContract.FeedEntry.TABLE_FAV_RECIPES);
+        String FAV_RECIPE_SELECT_QUERY = String.format("SELECT * FROM %s", FeedReaderContract.FeedEntry.TABLE_FAV_RECIPES);
 
         // "getReadableDatabase()" and "getWriteableDatabase()" return the same object (except under low
         // disk space scenarios)
@@ -261,7 +256,7 @@ public class FavDatabaseHelper extends SQLiteOpenHelper {
         ContentValues args = new ContentValues();
         String whereClause = FeedReaderContract.FeedEntry.COLUMN_RECIPE_ID + "=?";
         int rowsDeleted = db.delete(FeedReaderContract.FeedEntry.TABLE_FAV_RECIPES,whereClause,new String[]{String.valueOf(recipeID)});
-        return true;
+        return (rowsDeleted > 0);
     }
 
 

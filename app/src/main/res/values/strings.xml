@@ -21,6 +21,8 @@
     <string name="my_kai">My Kai</string>
     <string name="no_results">No results found</string>
 
+    <string name="error">Error</string>
+
     <string name="go_to_url">Go to website</string>
 
     <string name="servings"> Servings</string>
@@ -30,7 +32,6 @@
     <string name="remove_from_fav">-</string>
     <string name="add_to_fav_success"> was added to Favourites</string>
     <string name="remove_from_fav_success"> was removed from Favourites</string>
-
 
     <string name="food_tag_1">Main Course</string>
     <string name="food_tag_2">Side Dish</string>
@@ -44,7 +45,6 @@
     <string name="food_tag_10">Fingerfood</string>
     <string name="food_tag_11">Snack</string>
     <string name="food_tag_12">Drink</string>
-
 
     <string name="recipe_category">Category: </string>
     <string-array name="tags">
@@ -63,7 +63,6 @@
         <item>Snack</item>
         <item>Drink</item>
     </string-array>
-
 
     <string-array name="phrases">
         <item>Walnuts and pears you plant for your heirs.</item>
